@@ -2,12 +2,11 @@
 document.getElementById("curriculoForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
-    // Pegando valores
     const nome = document.getElementById("nome").value.trim();
     const email = document.getElementById("email").value.trim();
     const telefone = document.getElementById("telefone").value.trim();
 
-    // Pegando múltiplas formações
+    // Formações
     const formacoes = [];
     document.querySelectorAll("#formacoes-container textarea").forEach(campo => {
         if (campo.value.trim() !== "") {
@@ -15,33 +14,43 @@ document.getElementById("curriculoForm").addEventListener("submit", function(e) 
         }
     });
 
-    const cursos = document.getElementById("cursos").value.trim();
-    const experiencia = document.getElementById("experiencia").value.trim();
+    // Cursos
+    const cursos = [];
+    document.querySelectorAll("#cursos-container textarea").forEach(campo => {
+        if (campo.value.trim() !== "") {
+            cursos.push(campo.value.trim());
+        }
+    });
+
+    // Experiências
+    const experiencias = [];
+    document.querySelectorAll("#experiencias-container textarea").forEach(campo => {
+        if (campo.value.trim() !== "") {
+            experiencias.push(campo.value.trim());
+        }
+    });
 
     // Validação
-    if (!nome || !email || !telefone || formacoes.length === 0 || !experiencia) {
+    if (!nome || !email || !telefone || formacoes.length === 0 || cursos.length === 0 || experiencias.length === 0) {
         alert("Preencha todos os campos obrigatórios!");
         return;
     }
 
-    // Salvando no localStorage
     const dados = {
         nome,
         email,
         telefone,
         formacoes,
         cursos,
-        experiencia
+        experiencias
     };
 
     localStorage.setItem("curriculo", JSON.stringify(dados));
-
-    // Redireciona
     window.location.href = "curriculo.html";
 });
 
 
-// ✅ Adicionar nova formação
+// ===== FORMAÇÃO =====
 function adicionarFormacao() {
     const container = document.getElementById("formacoes-container");
 
@@ -56,14 +65,65 @@ function adicionarFormacao() {
     container.appendChild(div);
 }
 
-
-// ✅ Remover formação (com proteção mínima)
 function removerFormacao(botao) {
     const container = document.getElementById("formacoes-container");
 
-    // Impede remover se for o último campo
     if (container.children.length === 1) {
         alert("É necessário pelo menos uma formação.");
+        return;
+    }
+
+    botao.parentElement.remove();
+}
+
+
+// ===== CURSOS =====
+function adicionarCurso() {
+    const container = document.getElementById("cursos-container");
+
+    const div = document.createElement("div");
+    div.classList.add("cursos-item");
+
+    div.innerHTML = `
+        <textarea placeholder="Outro curso"></textarea>
+        <button type="button" class="btn-remover" onclick="removerCurso(this)">−</button>
+    `;
+
+    container.appendChild(div);
+}
+
+function removerCurso(botao) {
+    const container = document.getElementById("cursos-container");
+
+    if (container.children.length === 1) {
+        alert("É necessário pelo menos um curso.");
+        return;
+    }
+
+    botao.parentElement.remove();
+}
+
+
+// ===== EXPERIÊNCIA =====
+function adicionarExperiencia() {
+    const container = document.getElementById("experiencias-container");
+
+    const div = document.createElement("div");
+    div.classList.add("experiencia-item");
+
+    div.innerHTML = `
+        <textarea placeholder="Outra experiência profissional"></textarea>
+        <button type="button" class="btn-remover" onclick="removerExperiencia(this)">−</button>
+    `;
+
+    container.appendChild(div);
+}
+
+function removerExperiencia(botao) {
+    const container = document.getElementById("experiencias-container");
+
+    if (container.children.length === 1) {
+        alert("É necessário pelo menos uma experiência.");
         return;
     }
 
