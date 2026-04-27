@@ -33,10 +33,30 @@
 
 
 <h2>Cursos</h2>
-<textarea id="cursos" placeholder="Cursos complementares"></textarea>
+
+<div id="cursos-container">
+    <div class="cursos-item">
+        <textarea placeholder="Seus cursos" required></textarea>
+        <button type="button" class="btn-remover" onclick="removerCurso(this)">−</button>
+    </div>
+</div>
+
+<div class="btn-add-container">
+    <button type="button" class="btn-adicionar" onclick="adicionarCurso()">+</button>
+</div>
 
 <h2>Experiência Profissional</h2>
-<textarea id="experiencia" placeholder="Experiências profissionais" required></textarea>
+
+<div id="experiencias-container">
+    <div class="experiencia-item">
+        <textarea placeholder="Sua experiência profissional" required></textarea>
+        <button type="button" class="btn-remover" onclick="removerExperiencia(this)">−</button>
+    </div>
+</div>
+
+<div class="btn-add-container">
+    <button type="button" class="btn-adicionar" onclick="adicionarExperiencia()">+</button>
+</div>
 </div>
 <p></p>
 <center>
