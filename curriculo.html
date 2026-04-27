@@ -9,10 +9,8 @@
 
 <div class="curriculo" id="curriculo"></div>
 
-    <center>
 <button onclick="window.print()">Imprimir</button>
 
-    </center>
 <script>
 const dados = JSON.parse(localStorage.getItem("curriculo"));
 
@@ -27,11 +25,15 @@ if (dados) {
     ${dados.formacoes.map(f => `<li>${f}</li>`).join("")}
 </ul>
 
-        <h2>Cursos</h2>
-        <p>${dados.cursos}</p>
+    <h2>Cursos</h2>
+<ul>
+    ${dados.cursos.map(f => `<li>${f}</li>`).join("")}
+</ul>
 
         <h2>Experiência Profissional</h2>
-        <p>${dados.experiencia}</p>
+       <ul>
+    ${dados.experiencias.map(e => `<li>${e}</li>`).join("")}
+</ul>
     `;
 } else {
     document.getElementById("curriculo").innerHTML = "<p>Nenhum dado encontrado.</p>";
