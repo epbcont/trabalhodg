@@ -1,3 +1,4 @@
+/* ===== GERAL ===== */
 body {
     font-family: Arial, sans-serif;
     margin: 40px;
@@ -10,63 +11,68 @@ h1, h2 {
 
 form {
     background: white;
-    padding: 10px;
+    padding: 15px;
     border-radius: 20px;
 }
 
-input, textarea {
-
-  width: 100%;
-  box-sizing: border-box; /* importante! */
+/* ===== INPUTS ===== */
+input,
+textarea {
+    width: 100%;
+    box-sizing: border-box;
     margin-bottom: 15px;
     padding: 12px;
 }
 
-/* Estrutura das formações */
-.formacao-item {
+/* ===== ITENS (FORMAÇÃO, CURSOS, EXPERIÊNCIA) ===== */
+.formacao-item,
+.cursos-item,
+.experiencia-item {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-bottom: 10px;
 }
 
-.formacao-item textarea {
+.formacao-item textarea,
+.cursos-item textarea,
+.experiencia-item textarea {
     flex: 1;
     height: 60px;
     resize: none;
 }
 
-/* Botão remover (-) */
-.btn-remover {
+/* ===== BOTÕES (+ e -) ===== */
+.btn-remover,
+.btn-adicionar {
     width: 35px;
     height: 35px;
     border-radius: 50%;
     border: none;
-    outline: none;         /* ✅ remove borda ao clicar */
-    background:#91c0df;
+    outline: none;
+    background: #91c0df;
     color: white;
-    font-size: 18px;
     cursor: pointer;
-    padding: 0;            /* ✅ mantém formato circular */
+    padding: 0;
+
+    /* 🔥 CENTRALIZAÇÃO PERFEITA */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ajuste fino do tamanho */
+.btn-remover {
+    font-size: 18px;
+}
+
+.btn-adicionar {
+    font-size: 22px;
 }
 
 /* Container do botão + */
 .btn-add-container {
     margin-top: 10px;
-}
-
-/* Botão adicionar (+) */
-.btn-adicionar {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border: none;          /* ✅ remove borda preta */
-    outline: none;         /* ✅ remove contorno */
-    background:#91c0df;
-    color: white;
-    font-size: 22px;
-    cursor: pointer;
-    padding: 0;            /* ✅ mantém círculo perfeito */
 }
 
 /* Hover */
@@ -78,14 +84,14 @@ input, textarea {
     background: darkred;
 }
 
-/* Botões gerais */
+/* ===== BOTÃO PRINCIPAL ===== */
 button {
     padding: 10px 20px;
     background: #007BFF;
     color: white;
     border-radius: 20px;
-    border: none;          /* ✅ remove borda padrão */
-    outline: none;         /* ✅ remove contorno */
+    border: none;
+    outline: none;
     cursor: pointer;
 }
 
@@ -93,12 +99,14 @@ button:hover {
     background: #0056b3;
 }
 
-/* Página de impressão */
+/* ===== CURRÍCULO (página final) ===== */
 .curriculo {
     background: white;
     padding: 30px;
+    border-radius: 20px;
 }
 
+/* ===== IMPRESSÃO ===== */
 @media print {
     button {
         display: none;
